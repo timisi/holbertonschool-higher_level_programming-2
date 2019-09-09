@@ -21,18 +21,7 @@ int check_cycle(listint_t *list)
 		ptr2 = ptr2->next->next;
 
 		if (ptr1 == ptr2)
-		{
-			while (1)
-			{
-				ptr2 = ptr1;
-				while (ptr2->next != ptr1 && ptr2->next != list)
-					ptr2 = ptr2->next;
-				if (ptr2->next == list)
-					break;
-				list = list->next;
-			}
 			return (1);
-		}
 	}
 	return (0);
 }
