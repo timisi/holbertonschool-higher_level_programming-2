@@ -7,7 +7,7 @@
  */
 void print_python_bytes(PyObject *p)
 {
-	int size;
+	long int size;
 	int i;
 	char *str;
 
@@ -19,23 +19,19 @@ void print_python_bytes(PyObject *p)
 		size = ((PyVarObject *)(p))->ob_size;
 		str = ((PyBytesObject *)(p))->ob_sval;
 
-		printf("  Size: %d\n", size);
+		printf("  size: %ld\n", size);
 		printf("  trying string: %s\n", str);
 		size++;
 		if (size >= 10)
 			size = 10;
-		printf("  first %d bytes: ", size);
+		printf("  first %ld bytes:", size);
 		for (i = 0; i < size - 1; i++)
 		{
 			if (str[i] < 0)
-				printf("%02x ", 256 + str[i]);
+				printf(" %02x", 256 + str[i]);
 			else
-				printf("%02x ", str[i]);
+				printf(" %02x", str[i]);
 		}
-		if (str[i] < 0)
-			printf("%02x\n", 256 + str[i]);
-		else
-			printf("%02x\n", str[i]);
 	}
 }
 
