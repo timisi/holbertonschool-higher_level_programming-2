@@ -1,28 +1,6 @@
 #include <Python.h>
 #include <stdio.h>
-/**
- * _strcmp - compare the strings
- * @s1: the firts input string.
- * @s2: the second input string.
- * Return: if strings are the same 0, if not the difference between both.
- */
-int _strcmp(const char *s1, const char *s2)
-{
-	int i = 0;
 
-	while ((s1[i] != '\0' && s2[i] != '\0') && (s1[i] == s2[i]))
-	{
-		i++;
-	}
-	if (s1[i] == s2[i])
-	{
-		return (0);
-	}
-	else
-	{
-		return (s1[i] - s2[i]);
-	}
-}
 /**
  * print_python_bytes - prints some basic info about Python bytes.
  * @p: python object.
@@ -85,9 +63,7 @@ void print_python_list(PyObject *p)
 		type_name = (item->ob_type)->tp_name;
 		printf("Element %d: ", i);
 		printf("%s\n", type_name);
-		if (_strcmp(type_name, "bytes") == 0)
-		{
+		if (PyBytes_Check(item))
 			print_python_bytes(item);
-		}
 	}
 }
