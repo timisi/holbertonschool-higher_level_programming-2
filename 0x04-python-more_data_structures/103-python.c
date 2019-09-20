@@ -23,7 +23,10 @@ int _strcmp(const char *s1, const char *s2)
 		return (s1[i] - s2[i]);
 	}
 }
-
+/**
+ * print_python_bytes - prints some basic info about Python bytes.
+ * @p: python object.
+ */
 void print_python_bytes(PyObject *p)
 {
 	int size;
@@ -44,14 +47,17 @@ void print_python_bytes(PyObject *p)
 		if (size >= 10)
 			size = 10;
 		printf("  first %d bytes: ", size);
-		for (i = 0; i < size; i++)
+		for (i = 0; i < size - 1; i++)
 		{
 			if (str[i] < 0)
 				printf("%02x ", 256 + str[i]);
 			else
 				printf("%02x ", str[i]);
 		}
-		printf("\n");
+		if (str[i] < 0)
+			printf("%02x\n", 256 + str[i]);
+		else
+			printf("%02x\n", str[i]);
 	}
 }
 
