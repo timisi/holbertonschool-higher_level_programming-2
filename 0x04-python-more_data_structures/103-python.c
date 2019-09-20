@@ -25,13 +25,14 @@ void print_python_bytes(PyObject *p)
 		if (size >= 10)
 			size = 10;
 		printf("  first %ld bytes:", size);
-		for (i = 0; i < size - 1; i++)
+		for (i = 0; i < size; i++)
 		{
 			if (str[i] < 0)
 				printf(" %02x", 256 + str[i]);
 			else
 				printf(" %02x", str[i]);
 		}
+		printf("\n");
 	}
 }
 
