@@ -18,6 +18,7 @@ class Square:
     def size(self):
         """getter __size private instance attribute"""
         return self.__size
+
     @size.setter
     def size(self, value):
         if isinstance(value, int):
@@ -31,12 +32,19 @@ class Square:
     def position(self):
         """getter __position private instance attribute"""
         return self.__position
+
     @position.setter
     def position(self, value):
-        if isinstance(value, tuple) and len(value) == 2 and position[0] >= 0 and position[1] >= 0:
-            self.__position = value
-        else:
+        if not isinstance(value, tuple) and len(value) != 2:
             raise TypeError("position must be a tuple of 2 positive integers")
+        elif position[0] < 0 and position[1] < 0:
+            raise TypeError("position must be a tuple of 2 positive integers")
+        elif not isinstance(position[0], int):
+            raise TypeError("position must be a tuple of 2 positive integers")
+        elif not isinstance(position[1], int):
+            raise TypeError("position must be a tuple of 2 positive integers")
+        else:
+            self.__position = value
 
     def my_print(self):
         """Prints the square with # char"""
