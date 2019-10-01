@@ -7,16 +7,8 @@ class Square:
             size (int): value of the size
             position (tuple): position to print, two positive integers
         """
-        if isinstance(size, int):
-            self.__size = size
-            if size < 0:
-                raise ValueError("size must be >= 0")
-        else:
-            raise TypeError("size must be an integer")
-        if isinstance(position, tuple) and len(position) == 2 and position[0] >= 0 and position[1] >= 0:
-            self.__position = position
-        else:
-            raise TypeError("position must be a tuple of 2 positive integers")
+        self.__size = size
+        self.__position = position
 
     def area(self):
         """Returns current square area"""
