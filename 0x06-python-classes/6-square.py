@@ -29,7 +29,7 @@ class Square:
 
     @property
     def position(self):
-        """getter __size private instance attribute"""
+        """getter __position private instance attribute"""
         return self.__position
     @position.setter
     def position(self, value):
