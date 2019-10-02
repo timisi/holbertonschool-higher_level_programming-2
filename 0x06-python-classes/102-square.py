@@ -30,15 +30,21 @@ class Square:
                 raise ValueError("size must be >= 0")
         else:
             raise TypeError("size must be an integer")
+
     def __lt__(self, other):
         return self.size < other.size
+
     def __gt__(self, other):
         return self.size > other.size
+
     def __eq__(self, other):
         return self.size == other.size
+
     def __ne__(self, other):
         return self.size != other.size
+
     def __le__(self, other):
         return self.size <= other.size
+
     def __ge__(self, other):
         return self.size >= other.size
