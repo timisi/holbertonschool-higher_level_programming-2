@@ -1,10 +1,10 @@
+#!/usr/bin/python3
+import math
+
+
 class MagicClass:
-    """
-    MagicClass function
-    Args:
-        radius (int or float)
-    Attributes:
-        __radius: private
+    """MagicClass function
+    Args: radius (int or float)
     """
     def __init__(self, radius=0):
         self.__radius = 0
