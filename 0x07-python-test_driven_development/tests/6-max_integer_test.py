@@ -4,7 +4,11 @@
 import unittest
 max_integer = __import__('6-max_integer').max_integer
 
+
 class TestMaxInteger(unittest.TestCase):
+    """TestMaxInteger class to try different cases
+
+    """
     def test_empty_list(self):
         self.assertFalse(max_integer([]))
 
@@ -17,6 +21,7 @@ class TestMaxInteger(unittest.TestCase):
 
     def test_list_list(self):
         self.assertEqual(max_integer([[1, 2, 3], [4, 5, 6]]), [4, 5, 6])
+
     def test_list_tuples(self):
         self.assertEqual(max_integer([(1, 2, 3), (4, 5, 6)]), (4, 5, 6))
 
@@ -44,3 +49,6 @@ class TestMaxInteger(unittest.TestCase):
             max_integer(["z", ("a", "b")])
         with self.assertRaises(TypeError):
             max_integer([1, 2], [3, 4])
+
+if __name__ == '__main__':
+    unittest.main()
