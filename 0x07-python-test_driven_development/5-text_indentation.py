@@ -26,7 +26,10 @@ def text_indentation(text):
             count_b += 1
         else:
             break
-    cpy_text = text[count_b:-count]
+    if count != 0:
+        cpy_text = text[count_b:-count]
+    else:
+        cpy_text = text[count_b:]
     try:
         while cpy_text[i]:
             if cpy_text[i] == '.' or cpy_text[i] == '?' or cpy_text[i] == ':':
