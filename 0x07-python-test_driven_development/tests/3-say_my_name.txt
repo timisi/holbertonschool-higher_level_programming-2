@@ -22,5 +22,6 @@ Now use it:
     Traceback (most recent call last):
     TypeError: last_name must be a string
     >>> say_my_name("", "White")
-    Traceback (most recent call last):
-    TypeError: first_name must be a string
+    My name is  White
+    >>> say_my_name("", "")
+    My name is  
