@@ -34,3 +34,18 @@ Now use it:
     >>> add_integer(1, 2, 3)
     Traceback (most recent call last):
     TypeError: add_integer() takes from 1 to 2 positional arguments but 3 were given
+
+    >>> add_integer(float('inf'), 2)
+    Traceback (most recent call last):
+    OverflowError: cannot convert float infinity to integer
+    >>> add_integer(1, float('inf'))
+    Traceback (most recent call last):
+    OverflowError: cannot convert float infinity to integer
+
+    >>> add_integer(float('NaN'), 2)
+    Traceback (most recent call last):
+    ValueError: cannot convert float NaN to integer
+
+    >>> add_integer(1, float('NaN'))
+    Traceback (most recent call last):
+    ValueError: cannot convert float NaN to integer
