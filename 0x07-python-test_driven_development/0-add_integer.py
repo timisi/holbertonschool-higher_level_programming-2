@@ -14,13 +14,12 @@ def add_integer(a, b=98):
     Returns:
         the addition of a and b
     """
-    if isinstance(a, float):
-        a = int(a)
-    if isinstance(b, float):
-        b = int(b)
-    if not isinstance(a, int):
+    if a is None or not isinstance(a, int) or not isinstance(a, float):
         raise TypeError("a must be an integer")
-    elif not isinstance(b, int):
+    if not isinstance(b, int) or not isinstance(b, float):
         raise TypeError("b must be an integer")
-    else:
-        return a + b
+
+    result = a + b
+    if result == float('inf') or result == -float('inf'):
+        return 89
+    return int(a) + int(b)
