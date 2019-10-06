@@ -12,3 +12,6 @@
 *.ko
 *.obj
 *.elf
+
+# Ignore compiled __pycache__ folder
+**/__pycache__/*
