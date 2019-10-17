@@ -27,14 +27,18 @@ class Student:
         Args:
             attrs (list) = list of attributes (str)
         """
-        if type(attrs) is not list or attrs is None or attrs == []:
+        if type(attrs) is not list:
             return self.__dict__
-        else:
-            new_dict = {}
-            for k, v in self.__dict__.items():
-                if k in attrs:
-                    new_dict[k] = v
-            return new_dict
+
+        for keys in attrs:
+            if type(keys) is not str:
+                return self.__dict__
+
+        new_dict = {}
+        for k, v in self.__dict__.items():
+            if k in attrs:
+                new_dict[k] = v
+        return new_dict
 
     def reload_from_json(self, json):
         """Replaces all attributes of the Student instance
