@@ -1,15 +1,21 @@
 #!/usr/bin/python3
-"""Module ´´4-append_write´´ with append_write function"""
+"""Module ´´100-append_after´´ with append_after function"""
 
 
-def append_write(filename="", text=""):
-    """Function that appends a string at the end of a text file (UTF8)
+def append_after(filename="", search_string="", new_string=""):
+    """Function that  inserts a line of text to a file, after each line
+    containing a specific string
     Args:
         filename (str): string of the filename
-        text (str): text to append
-    Returns:
-        Number of characters added
+        search_string (str): text to look
+        new_string (str): text to append after.
     """
-    with open(filename, 'a', encoding="utf-8") as f:
-        count = f.write(text)
-    return count
+    final_txt = ""
+    with open(filename) as f:
+        for line in f:
+            final_txt += line
+            if search_string in line:
+                final_txt += new_string
+
+    with open(filename, "w") as f:
+        f.write(final_txt)
