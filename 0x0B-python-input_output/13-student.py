@@ -27,7 +27,7 @@ class Student:
         Args:
             attrs (list) = list of attributes (str)
         """
-        if type(attrs) is not list or attrs is None:
+        if type(attrs) is not list or attrs is None or attrs == []:
             return self.__dict__
         else:
             new_dict = {}
