@@ -8,15 +8,14 @@ def read_lines(filename="", nb_lines=0):
         filename (str): string of the filename
         nb_lines (int): number of lines to print
     """
-    count = 0
-    with open(filename, encoding="utf-8") as f:
-        for line in f:
-            count += 1
-
-    if nb_lines == 0 or nb_lines >= count:
+    if nb_lines <= 0:
         with open(filename, encoding="utf-8") as f:
             print(f.read(), end="")
 
     with open(filename, encoding="utf-8") as f:
         for n in range(nb_lines):
-            print(f.readline(), end="")
+            line_str = f.readline()
+            if line_str != '':
+                print(line_str, end="")
+            else:
+                break
