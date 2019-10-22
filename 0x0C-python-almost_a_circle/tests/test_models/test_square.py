@@ -1,5 +1,7 @@
 #!/usr/bin/python3
-"""Unittest module for Square class"""
+"""
+Unittest module for Square class
+"""
 
 import unittest
 from unittest.mock import patch

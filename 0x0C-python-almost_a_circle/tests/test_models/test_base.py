@@ -1,5 +1,7 @@
 #!/usr/bin/python3
-"""Unittest module for Base class"""
+"""
+Unittest module for Base class
+"""
 
 import unittest
 import json

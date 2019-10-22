@@ -1,5 +1,7 @@
 #!/usr/bin/python3
-"""Unittest module for Rectangle class"""
+"""
+Unittest module for Rectangle class
+"""
 
 import unittest
 from unittest.mock import patch
