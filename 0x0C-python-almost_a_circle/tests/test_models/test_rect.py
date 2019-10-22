@@ -51,6 +51,9 @@ class TestRectangleClass(unittest.TestCase):
         with self.assertRaises(TypeError):
             r1 = Rectangle(2, 2, 2, 2)
             r1.display(10)
+        with self.assertRaises(TypeError):
+            r1 = Rectangle(2, 2, 2, 2)
+            r1.to_dictionary(10)
 
     # width type
     def test_er_type_rect_width(self):
@@ -148,23 +151,23 @@ class TestRectangleClass(unittest.TestCase):
     def test_display(self):
         """Test display method"""
         r1 = Rectangle(2, 2)
-        with patch ('sys.stdout', new=StringIO()) as output:
+        with patch('sys.stdout', new=StringIO()) as output:
             r1.display()
             self.assertEqual(output.getvalue().strip(), '##\n##')
         r2 = Rectangle(3, 2)
-        with patch ('sys.stdout', new=StringIO()) as output:
+        with patch('sys.stdout', new=StringIO()) as output:
             r2.display()
             self.assertEqual(output.getvalue().strip(), '###\n###')
         r3 = Rectangle(2, 3, 2, 2)
-        with patch ('sys.stdout', new=StringIO()) as output:
+        with patch('sys.stdout', new=StringIO()) as output:
             r3.display()
             self.assertEqual(output.getvalue(), '\n\n  ##\n  ##\n  ##\n')
         r4 = Rectangle(3, 2, 1)
-        with patch ('sys.stdout', new=StringIO()) as output:
+        with patch('sys.stdout', new=StringIO()) as output:
             r4.display()
             self.assertEqual(output.getvalue(), ' ###\n ###\n')
         r4 = Rectangle(3, 2, 0, 2)
-        with patch ('sys.stdout', new=StringIO()) as output:
+        with patch('sys.stdout', new=StringIO()) as output:
             r4.display()
             self.assertEqual(output.getvalue(), '\n\n###\n###\n')
 
@@ -211,8 +214,24 @@ class TestRectangleClass(unittest.TestCase):
     def test_to_dict_rect(self):
         """test to_dictionary() method"""
         r45 = Rectangle(10, 2, 1, 9, 1)
+        r46 = Rectangle(11, 10, 10, 10, 10)
         r45_dictionary = r45.to_dictionary()
         self.assertTrue(type(r45_dictionary) is dict)
+        self.assertIn('id', r45_dictionary)
+        self.assertIn('width', r45_dictionary)
+        self.assertIn('height', r45_dictionary)
+        self.assertIn('x', r45_dictionary)
+        self.assertIn('y', r45_dictionary)
+        self.assertEqual(r45_dictionary['id'], 1)
+        self.assertEqual(r45_dictionary['width'], 10)
+        self.assertEqual(r45_dictionary['height'], 2)
+        self.assertEqual(r45_dictionary['x'], 1)
+        self.assertEqual(r45_dictionary['y'], 9)
+        self.assertEqual(len(r45_dictionary), 5)
+        r46.update(**r45_dictionary)
+        self.assertEqual(str(r46), "[Rectangle] (1) 1/9 - 10/2")
+        r46_dictionary = r46.to_dictionary()
+        self.assertEqual(r45_dictionary, r46_dictionary)
 
 if __name__ == '__main__':
     unittest.main()

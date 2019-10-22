@@ -45,6 +45,9 @@ class TestSquareClass(unittest.TestCase):
         with self.assertRaises(TypeError):
             s7 = Square(2, 2, 2)
             s7.display(10)
+        with self.assertRaises(TypeError):
+            s1 = Square(2, 2, 2)
+            s1.to_dictionary(10)
 
     # size type
     def test_er_type_squa_size(self):
@@ -118,23 +121,23 @@ class TestSquareClass(unittest.TestCase):
     def test_display_squa(self):
         """Test display method"""
         s1 = Square(2)
-        with patch ('sys.stdout', new=StringIO()) as output:
+        with patch('sys.stdout', new=StringIO()) as output:
             s1.display()
             self.assertEqual(output.getvalue().strip(), '##\n##')
         s2 = Square(3)
-        with patch ('sys.stdout', new=StringIO()) as output:
+        with patch('sys.stdout', new=StringIO()) as output:
             s2.display()
             self.assertEqual(output.getvalue().strip(), '###\n###\n###')
         s3 = Square(2, 2, 2)
-        with patch ('sys.stdout', new=StringIO()) as output:
+        with patch('sys.stdout', new=StringIO()) as output:
             s3.display()
             self.assertEqual(output.getvalue(), '\n\n  ##\n  ##\n')
         s4 = Square(3, 1)
-        with patch ('sys.stdout', new=StringIO()) as output:
+        with patch('sys.stdout', new=StringIO()) as output:
             s4.display()
             self.assertEqual(output.getvalue(), ' ###\n ###\n ###\n')
         s5 = Square(3, 0, 2)
-        with patch ('sys.stdout', new=StringIO()) as output:
+        with patch('sys.stdout', new=StringIO()) as output:
             s5.display()
             self.assertEqual(output.getvalue(), '\n\n###\n###\n###\n')
 
@@ -171,6 +174,27 @@ class TestSquareClass(unittest.TestCase):
             s44.update(89, 2, 'h', 5)
         with self.assertRaises(TypeError):
             s44.update(y=1, size='h', x=3, id=44)
+
+        # to dictionary
+    def test_to_dict_squa(self):
+        """test to_dictionary() method"""
+        s45 = Square(10, 2, 9, 1)
+        s46 = Square(10, 10, 10, 10)
+        s45_dictionary = s45.to_dictionary()
+        self.assertTrue(type(s45_dictionary) is dict)
+        self.assertIn('id', s45_dictionary)
+        self.assertIn('size', s45_dictionary)
+        self.assertIn('x', s45_dictionary)
+        self.assertIn('y', s45_dictionary)
+        self.assertEqual(s45_dictionary['id'], 1)
+        self.assertEqual(s45_dictionary['size'], 10)
+        self.assertEqual(s45_dictionary['x'], 2)
+        self.assertEqual(s45_dictionary['y'], 9)
+        self.assertEqual(len(s45_dictionary), 4)
+        s46.update(**s45_dictionary)
+        self.assertEqual(str(s46), "[Square] (1) 2/9 - 10")
+        s46_dictionary = s46.to_dictionary()
+        self.assertEqual(s45_dictionary, s46_dictionary)
 
 if __name__ == '__main__':
     unittest.main()
