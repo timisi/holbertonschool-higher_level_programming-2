@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 """Unittest module for Base class"""
+
 import unittest
 import json
 from models.base import Base
@@ -10,6 +11,25 @@ from models.square import Square
 class TestBaseClass(unittest.TestCase):
     """TestBaseClass class to test the Base class"""
 
+    # instances and subclasses
+    def test_instance(self):
+        """test inherit objects"""
+        r1 = Rectangle(10, 10)
+        r2 = Rectangle(10, 10)
+        s1 = Square(10)
+        s2 = Square(10)
+        self.assertTrue(isinstance(r1, Base))
+        self.assertTrue(isinstance(s1, Base))
+        self.assertTrue(isinstance(s1, Rectangle))
+        self.assertTrue(id(r1) != id(r2))
+        self.assertTrue(id(s1) != id(s2))
+
+    def test_subclass(self):
+        """test inherit objects"""
+        self.assertTrue(issubclass(Rectangle, Base))
+        self.assertTrue(issubclass(Square, Rectangle))
+
+    # id
     def test_id_base(self):
         """test id creation"""
         base_inst_1 = Base(1)
@@ -21,6 +41,7 @@ class TestBaseClass(unittest.TestCase):
         self.assertEqual(base_inst_3.id, 3)
         self.assertEqual(base_inst_4.id, 12)
 
+    # argument errors
     def test_er_type_base(self):
         """Test Error arguments"""
         with self.assertRaises(TypeError):
