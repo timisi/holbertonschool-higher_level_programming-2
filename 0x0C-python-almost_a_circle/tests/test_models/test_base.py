@@ -11,9 +11,7 @@ from models.square import Square
 class TestBaseClass(unittest.TestCase):
     """TestBaseClass class to test the Base class"""
 
-    # instances and subclasses
     def test_instance(self):
-        """test inherit objects"""
         r1 = Rectangle(10, 10)
         r2 = Rectangle(10, 10)
         s1 = Square(10)
@@ -25,13 +23,10 @@ class TestBaseClass(unittest.TestCase):
         self.assertTrue(id(s1) != id(s2))
 
     def test_subclass(self):
-        """test inherit objects"""
         self.assertTrue(issubclass(Rectangle, Base))
         self.assertTrue(issubclass(Square, Rectangle))
 
-    # id
     def test_id_base(self):
-        """test id creation"""
         base_inst_1 = Base(1)
         base_inst_2 = Base(2)
         base_inst_3 = Base(3)
@@ -41,9 +36,7 @@ class TestBaseClass(unittest.TestCase):
         self.assertEqual(base_inst_3.id, 3)
         self.assertEqual(base_inst_4.id, 12)
 
-    # argument errors
     def test_er_type_base(self):
-        """Test Error arguments"""
         with self.assertRaises(TypeError):
             b1 = Base(10, 2)
         with self.assertRaises(TypeError):
@@ -74,8 +67,6 @@ class TestBaseClass(unittest.TestCase):
             list_output = Square.from_json_string()
 
     def test_to_json_string(self):
-        """test to_json_string(list_dictionaries) static method of Base
-        class"""
         r1 = Rectangle(10, 7, 2, 8)
         dictionary = r1.to_dictionary()
         json_dictionary = Base.to_json_string([dictionary])
@@ -89,7 +80,6 @@ class TestBaseClass(unittest.TestCase):
                          json.dumps([dictionary]))
 
     def test_save_to_file_rect(self):
-        """test save_to_file class method"""
         r1 = Rectangle(10, 7, 2, 8)
         r2 = Rectangle(2, 4)
         Rectangle.save_to_file([r1, r2])
@@ -105,7 +95,6 @@ class TestBaseClass(unittest.TestCase):
             self.assertEqual(a[1], r2.to_dictionary())
 
     def test_save_to_file_squa(self):
-        """test save_to_file class method"""
         s1 = Square(10, 7, 2)
         s2 = Square(2)
         Square.save_to_file([s1, s2])
@@ -121,8 +110,6 @@ class TestBaseClass(unittest.TestCase):
             self.assertEqual(b[1], s2.to_dictionary())
 
     def test_json_string_to_dict_rect(self):
-        """test from_json_string(json_string) method static method of Base
-        class"""
         list_input = [
             {'id': 89, 'width': 10, 'height': 4},
             {'id': 7, 'width': 1, 'height': 7}
@@ -150,8 +137,6 @@ class TestBaseClass(unittest.TestCase):
         self.assertEqual(list_output, [])
 
     def test_json_string_to_dict_squa(self):
-        """test from_json_string(json_string) method static method of Base
-        class"""
         list_input = [
             {'id': 89, 'size': 10},
             {'id': 7, 'size': 4}
@@ -179,7 +164,6 @@ class TestBaseClass(unittest.TestCase):
         self.assertEqual(list_output, [])
 
     def test_create_rect(self):
-        """test class method create(cls, **dictionary)"""
         r1 = Rectangle(3, 5, 1)
         r1_dictionary = r1.to_dictionary()
         r2 = Rectangle.create(**r1_dictionary)
@@ -190,7 +174,6 @@ class TestBaseClass(unittest.TestCase):
         self.assertFalse(r1 == r2)
 
     def test_create_squa(self):
-        """test class method create(cls, **dictionary)"""
         s1 = Square(3, 1)
         s1_dictionary = s1.to_dictionary()
         s2 = Square.create(**s1_dictionary)
@@ -201,7 +184,6 @@ class TestBaseClass(unittest.TestCase):
         self.assertFalse(s1 == s2)
 
     def test_file_to_instance_rect(self):
-        """test load_from_file(cls) class method"""
         r1 = Rectangle(10, 7, 2, 8)
         r2 = Rectangle(2, 4)
         list_rectangles_input = [r1, r2]
@@ -214,7 +196,6 @@ class TestBaseClass(unittest.TestCase):
                              str(list_rectangles_output[i]))
 
     def test_file_to_instance_squa(self):
-        """test load_from_file(cls) class method"""
         s1 = Square(5)
         s2 = Square(7, 9, 1)
         list_squares_input = [s1, s2]
@@ -227,7 +208,6 @@ class TestBaseClass(unittest.TestCase):
                              str(list_squares_output[i]))
 
     def test_file_csv_rect(self):
-        """test save_to_file_csv class method"""
         r1 = Rectangle(10, 7, 2, 8)
         r2 = Rectangle(2, 4)
         list_rectangles_input = [r1, r2]
@@ -240,7 +220,6 @@ class TestBaseClass(unittest.TestCase):
                              str(list_rectangles_output[i]))
 
     def test_file_csv_squa(self):
-        """test load_from_file(cls) class method"""
         s1 = Square(5)
         s2 = Square(7, 9, 1)
         list_squares_input = [s1, s2]
