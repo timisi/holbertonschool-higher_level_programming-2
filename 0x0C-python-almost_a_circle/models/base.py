@@ -2,7 +2,7 @@
 """module ´´base´´ with base class"""
 import json
 import csv
-
+import turtle
 
 class Base:
     """Base class
@@ -138,3 +138,33 @@ class Base:
 
         except IOError:
             return []
+
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        """Function that opens a window and draws all the Rectangles and
+        Squares
+        """
+        tu = turtle.Turtle()
+        tu.pensize(2)
+        tu.pencolor("blue")
+        for square in list_squares:
+            tu.up()
+            tu.setx(square.x)
+            tu.sety(square.y)
+            tu.down()
+            for i in range(4):
+                tu.forward(square.size)
+                tu.left(90)
+        tu.pencolor("red")
+        for rect in list_rectangles:
+            tu.up()
+            tu.setx(rect.x)
+            tu.sety(rect.y)
+            tu.down()
+            for i in range(2):
+                tu.forward(rect.width)
+                tu.left(90)
+                tu.forward(rect.height)
+                tu.left(90)
+        tu.ht()
+        turtle.done()
