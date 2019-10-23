@@ -95,6 +95,18 @@ class TestBaseClass(unittest.TestCase):
             self.assertTrue(type(a[1]) is dict)
             self.assertEqual(a[0], r1.to_dictionary())
             self.assertEqual(a[1], r2.to_dictionary())
+        Rectangle.save_to_file([])
+        with open("Rectangle.json", "r") as file:
+            json_string = file.read()
+            a = json.loads(json_string)
+            self.assertTrue(type(a) is list)
+            self.assertTrue(a == [])
+        Rectangle.save_to_file(None)
+        with open("Rectangle.json", "r") as file:
+            json_string = file.read()
+            a = json.loads(json_string)
+            self.assertTrue(type(a) is list)
+            self.assertTrue(a == [])
 
     def test_save_to_file_squa(self):
         s1 = Square(10, 7, 2)
@@ -110,6 +122,18 @@ class TestBaseClass(unittest.TestCase):
             self.assertTrue(type(b[1]) is dict)
             self.assertEqual(b[0], s1.to_dictionary())
             self.assertEqual(b[1], s2.to_dictionary())
+        Square.save_to_file([])
+        with open("Square.json", "r") as file:
+            json_string = file.read()
+            a = json.loads(json_string)
+            self.assertTrue(type(a) is list)
+            self.assertTrue(a == [])
+        Square.save_to_file(None)
+        with open("Square.json", "r") as file:
+            json_string = file.read()
+            a = json.loads(json_string)
+            self.assertTrue(type(a) is list)
+            self.assertTrue(a == [])
 
     def test_json_string_to_dict_rect(self):
         list_input = [
