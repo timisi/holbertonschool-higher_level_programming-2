@@ -15,6 +15,7 @@ if __name__ == "__main__":
 
     db = MySQLdb.connect(
         host="localhost",
+        port=3306,
         user=MY_USER,
         passwd=MY_PASS,
         db=MY_DB
@@ -23,7 +24,7 @@ if __name__ == "__main__":
     cur.execute("SELECT cities.name FROM cities\
                  JOIN states\
                  ON states.id = cities.state_id\
-                 WHERE states.name = (%s) ORDER BY cities.id ASC",
+                 WHERE states.name LIKE BINARY (%s) ORDER BY cities.id ASC",
                 (state_name,))
     table = cur.fetchall()
 
