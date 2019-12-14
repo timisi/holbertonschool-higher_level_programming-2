@@ -22,9 +22,9 @@ if __name__ == "__main__":
     )
     cur = db.cursor()
     cur.execute("SELECT cities.name FROM cities\
-                 JOIN states\
+                 LEFT JOIN states\
                  ON states.id = cities.state_id\
-                 WHERE states.name LIKE BINARY (%s) ORDER BY cities.id ASC",
+                 WHERE states.name = (%s) ORDER BY cities.id ASC",
                 (state_name,))
     table = cur.fetchall()
 
