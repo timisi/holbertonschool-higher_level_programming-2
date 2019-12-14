@@ -15,6 +15,6 @@ if __name__ == "__main__":
 
     states = session.query(State).filter(State.name.like(sys.argv[4]))
     if states.count() != 1 or not states:
-        print("Nothing")
+        print("Not found")
     else:
         print("{}".format(states.first().id))
