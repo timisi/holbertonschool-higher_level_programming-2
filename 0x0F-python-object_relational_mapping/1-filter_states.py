@@ -14,6 +14,7 @@ if __name__ == "__main__":
 
     db = MySQLdb.connect(
         host="localhost",
+        port=3306,
         user=MY_USER,
         passwd=MY_PASS,
         db=MY_DB
@@ -24,6 +25,5 @@ if __name__ == "__main__":
 
     for row in table:
         print(row)
-
     cur.close()
     db.close()
