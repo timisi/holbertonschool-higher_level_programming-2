@@ -28,10 +28,11 @@ if __name__ == "__main__":
                 (state_name,))
     table = cur.fetchall()
 
+    end_str = ""
     str_cities = ""
-    for row in table[:-1]:
-        str_cities = str_cities + row[0] + ", "
-    str_cities = str_cities + table[-1][0]
+    for row in table:
+        str_cities = str_cities + end_str + row[0]
+        end_str = ", "
 
     print(str_cities)
     cur.close()
