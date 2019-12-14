@@ -15,12 +15,14 @@ if __name__ == "__main__":
 
     db = MySQLdb.connect(
         host="localhost",
+        port=3306,
         user=MY_USER,
         passwd=MY_PASS,
         db=MY_DB
     )
     cur = db.cursor()
-    cur.execute("SELECT * FROM states WHERE name = \"{}\" ORDER BY states.id ASC".format(state_name))
+    cur.execute("SELECT * FROM states WHERE name = \"{}\"\
+    ORDER BY states.id ASC".format(state_name))
     table = cur.fetchall()
 
     for row in table:
