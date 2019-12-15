@@ -4,7 +4,6 @@
 import sys
 from relationship_state import Base, State
 from relationship_city import City
-from model_city import City
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import (create_engine)
 
