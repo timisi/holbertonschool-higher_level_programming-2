@@ -8,7 +8,6 @@ import sys
 
 if __name__ == "__main__":
 
-
     MY_USER = sys.argv[1]
     MY_PASS = sys.argv[2]
     MY_DB = sys.argv[3]
