@@ -11,8 +11,7 @@ if __name__ == "__main__":
     url = sys.argv[1]
 
     try:
-        req = urllib.request.Request(url)
-        with urllib.request.urlopen(req) as response:
+        with urllib.request.urlopen(url) as response:
             page_info = response.read().decode('utf-8')
             print(page_info)
     except urllib.error.HTTPError as e:
