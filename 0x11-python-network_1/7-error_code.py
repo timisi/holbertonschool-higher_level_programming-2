@@ -7,10 +7,11 @@ import requests
 import sys
 
 
-url = sys.argv[1]
-r = requests.get(url)
-status = r.status_code
-if status >= 400:
-    print("Error code: {}".format(status))
-else:
-    print(r.text)
+if __name__ == "__main__":
+    url = sys.argv[1]
+    r = requests.get(url)
+    status = r.status_code
+    if status >= 400:
+        print("Error code: {}".format(status))
+    else:
+        print(r.text)
