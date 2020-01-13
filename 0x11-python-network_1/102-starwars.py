@@ -12,19 +12,23 @@ if __name__ == "__main__":
     json_obj = r.json()
     page_num = 0
 
+    r_films = requests.get("https://swapi.co/api/films/")
+    films_obj = r_films.json().get('results')
+
+    films_dict = {}
+    for film in films_obj:
+        films_dict[film.get('url')] = film.get('title')
+
     while True:
         if page_num == 0:
                 print("Number of results: {}".format(json_obj.get('count')))
         else:
             r = requests.get(json_obj['next'])
             json_obj = r.json()
-        results = json_obj.get('results')
-        for people in results:
+        for people in json_obj.get('results'):
             print(people.get('name'))
-            for url_film in people.get('films'):
-                r_film = requests.get(url_film)
-                film_obj = r_film.json()
-                print("\t{}".format(film_obj.get('title')))
+            for films_url in people.get('films'):
+                print("\t{}".format(films_dict[films_url]))
         page_num += 1
         if json_obj['next'] is None:
             break
