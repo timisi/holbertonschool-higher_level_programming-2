@@ -12,6 +12,7 @@ if __name__ == "__main__":
                                                               sys.argv[1])
     r = requests.get(url)
     json_obj = r.json()
-    for commit in json_obj:
+    for num in range(0, 10):
+        commit = json_obj[num]
         author_name = commit.get('commit').get('author').get('name')
         print("{}: {}".format(commit.get('sha'), author_name))
