@@ -15,5 +15,5 @@ data = data.encode('utf-8')
 
 req = urllib.request.Request(url, data)
 with urllib.request.urlopen(req) as response:
-    page_info = response.read()
+    page_info = response.read().decode('utf-8')
     print(page_info)
