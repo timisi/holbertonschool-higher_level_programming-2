@@ -12,7 +12,7 @@ if __name__ == "__main__":
     json_obj = r.json()
     page_num = 0
 
-    while json_obj['next'] is not None:
+    while True:
         if page_num == 0:
                 print("Number of results: {}".format(json_obj.get('count')))
         else:
@@ -22,3 +22,5 @@ if __name__ == "__main__":
         for people in results:
             print(people.get('name'))
         page_num += 1
+        if json_obj['next'] is None:
+            break

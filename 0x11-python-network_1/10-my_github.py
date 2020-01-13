@@ -1,6 +1,6 @@
 #!/usr/bin/python3
-"""Python script that takes in a string and sends a search request to the Star
-Wars API
+"""Python script that takes your Github credentials (username and password)
+and uses the Github API to display your id
 """
 import requests
 from requests.auth import HTTPBasicAuth
