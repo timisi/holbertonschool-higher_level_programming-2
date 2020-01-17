@@ -46,4 +46,5 @@ if __name__ == "__main__":
                                params=search_params)
     tweet_data = search_resp.json()
     for x in tweet_data['statuses']:
-        print("[{}] {}".format(x['id'], x['text']))
+        # print(x)
+        print("[{}] {} by {}".format(x['id'], x['text'], x['user']['name']))
