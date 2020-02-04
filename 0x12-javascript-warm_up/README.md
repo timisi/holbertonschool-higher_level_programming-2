@@ -29,12 +29,13 @@
 - 5-to_integer.js: Script that prints My number: <first argument converted in integer> if the first argument can be converted to an integer
 - 6-multi_languages_loop.js: Script that prints an array of string in a loop
 - 7-multi_c.js: Script that prints x times “C is fun”
-- 8-square.js 9-add.js:
-- 10-factorial.js:
-- 11-second_biggest.js:
-- 12-object.js:
-- 13-add.js:
-- 100-let_me_const.js:
-- 101-call_me_moby.js:
-- 102-add_me_maybe.js:
-- 103-object_fct.js:
+- 8-square.js: Script that prints a square
+- 9-add.js: Script that prints the addition of 2 integers
+- 10-factorial.js: Script that computes and prints a factorial
+- 11-second_biggest.js: Script that searches the second biggest integer in the list of arguments
+- 12-object.js: Script to replace the value 12 with 89
+- 13-add.js: Function that returns the addition of 2 integers
+- 100-let_me_const.js: File that modifies the value of myVar to 333 (from 100-main.js)
+- 101-call_me_moby.js: Function that executes x times a function (from 101-main.js)
+- 102-add_me_maybe.js: Function that increments and calls a function (from 102-main.js)
+- 103-object_fct.js: Script that increments the integer value in an object
