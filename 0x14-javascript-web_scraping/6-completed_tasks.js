@@ -13,11 +13,10 @@ request(urlApi, function (error, response, body) {
 
     for (let i = 0; i < jsonObj.length; i++) {
       key = jsonObj[i].userId.toString();
-      if (!newDict[key]) {
-        newDict[key] = 0;
-      }
-      if (jsonObj[i].completed === true) {
-        newDict[key] += 1;
+      if (!newDict[key] && jsonObj[i].completed) {
+        newDict[key] = 1;
+      } else if (jsonObj[i].completed) {
+        newDict[key]++;
       }
     }
 
