@@ -6,7 +6,7 @@ const filePath = process.argv[3];
 
 request(urlApi, function (error, response, body) {
   if (error) {
-    console.error(error); // Print the error if one occurred
+    console.log(error); // Print the error if one occurred
   } else {
     const fs = require('fs');
 
